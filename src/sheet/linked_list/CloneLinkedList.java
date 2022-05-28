@@ -1,4 +1,4 @@
-package sheet.linkedList;
+package sheet.linked_list;
 
 public class CloneLinkedList {
     static class Node {
