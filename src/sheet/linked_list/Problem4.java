@@ -6,21 +6,21 @@ public class Problem4 {
         if(head == null) {
             return;
         }
-        Node slow = head, fast = head.getNext();
+        Node slow = head, fast = head.next;
         //check if LL contains a loop or not
         while(slow != fast) {
-            if(fast == null || fast.getNext() == null) {
+            if(fast == null || fast.next == null) {
                 return;
             }
-            slow = slow.getNext();
-            fast = fast.getNext().getNext();
+            slow = slow.next;
+            fast = fast.next.next;
         }
         //both pointers now pointing to the same node
         //find the size of the loop
         int size = 1;
-        fast = fast.getNext();
+        fast = fast.next;
         while(fast != slow) {
-            fast = fast.getNext();
+            fast = fast.next;
             size++;
         }
         //update pointers to the head
@@ -28,26 +28,14 @@ public class Problem4 {
         fast = head;
         //move pointer fast by (size-1) nodes
         for(int i=0; i<size-1; i++) {
-            fast = fast.getNext();
+            fast = fast.next;
         }
         //now keep moving both pointers until they point to first and last node of the loop
-        while(fast.getNext() != slow) {
-            fast = fast.getNext();
-            slow = slow.getNext();
+        while(fast.next != slow) {
+            fast = fast.next;
+            slow = slow.next;
         }
         //change next pointer of fast node to null
-        fast.setNext(null);
-    }
-
-    public static void main(String[] args) {
-        Node head = new Node(1);
-        Node node2 = new Node(3);
-        Node node3 = new Node(4);
-        head.setNext(node2);
-        node2.setNext(node3);
-        node3.setNext(node2);
-
-        removeLoop(head);
-        Problem1.printLL(head);
+        fast.next = null;
     }
 }

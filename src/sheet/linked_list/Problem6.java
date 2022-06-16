@@ -4,25 +4,23 @@ public class Problem6 {
     //remove duplicate values from sorted LL
     public static void removeDuplicates(Node head) {
         Node curr = head;
-        while(curr.getNext() != null) {
-            if(curr.getData() == curr.getNext().getData()) {
-                Node temp = curr.getNext();
-                curr.setNext(curr.getNext().getNext());
-                temp.setNext(null);
+        while(curr.next != null) {
+            if(curr.data == curr.next.data) {
+                Node temp = curr.next;
+                curr.next = curr.next.next;
+                temp.next = null;
                 continue;
             }
-            curr = curr.getNext();
+            curr = curr.next;
         }
     } //O(n)
 
     public static void main(String[] args) {
-        Node head = new Node(2);
-        Node node2 = new Node(2);
-        Node node3 = new Node(4);
-        Node node4 = new Node(5);
-        head.setNext(node2);
-        node2.setNext(node3);
-        node3.setNext(node4);
+        Node head = null;
+        head = Node.insert(head, 5);
+        head = Node.insert(head, 4);
+        head = Node.insert(head, 2);
+        head = Node.insert(head, 2);
 
         Problem1.printLL(head);
         removeDuplicates(head);

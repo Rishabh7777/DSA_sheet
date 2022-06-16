@@ -7,25 +7,14 @@ public class Problem3 {
         if(head == null) {
             return false;
         }
-        Node slow = head, fast = head.getNext();
+        Node slow = head, fast = head.next;
         while(slow != fast) {
-            if(fast == null || fast.getNext() == null) {
+            if(fast == null || fast.next == null) {
                 return false;
             }
-            slow = slow.getNext();
-            fast = fast.getNext().getNext();
+            slow = slow.next;
+            fast = fast.next.next;
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        Node head = new Node(1);
-        Node node2 = new Node(3);
-        Node node3 = new Node(4);
-        head.setNext(node2);
-        node2.setNext(node3);
-        node3.setNext(node2);
-
-        System.out.println(isLoopPresent(head));
     }
 }

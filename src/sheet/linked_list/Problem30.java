@@ -1,6 +1,6 @@
 package sheet.linked_list;
 
-public class CloneLinkedList {
+public class Problem30 {
     static class Node {
         int data;
         Node next, arb;

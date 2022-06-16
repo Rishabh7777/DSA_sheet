@@ -8,30 +8,16 @@ public class Problem7 {
     public static void removeDuplicates(Node head) {
         Set<Integer> set = new HashSet<>();
         Node curr = head;
-        set.add(curr.getData());
-        while(curr.getNext() != null) {
-            if(set.contains(curr.getNext().getData())) {
-                Node temp = curr.getNext();
-                curr.setNext(curr.getNext().getNext());
-                temp.setNext(null);
+        set.add(curr.data);
+        while(curr.next != null) {
+            if(set.contains(curr.next.data)) {
+                Node temp = curr.next;
+                curr.next = curr.next.next;
+                temp.next = null;
                 continue;
             }
-            set.add(curr.getNext().getData());
-            curr = curr.getNext();
+            set.add(curr.next.data);
+            curr = curr.next;
         }
     } //O(n), using O(n) extra space
-
-    public static void main(String[] args) {
-        Node head = new Node(4);
-        Node node2 = new Node(2);
-        Node node3 = new Node(4);
-        Node node4 = new Node(5);
-        head.setNext(node2);
-        node2.setNext(node3);
-        node3.setNext(node4);
-
-        Problem1.printLL(head);
-        removeDuplicates(head);
-        Problem1.printLL(head);
-    }
 }

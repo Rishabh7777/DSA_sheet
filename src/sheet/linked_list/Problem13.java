@@ -8,9 +8,9 @@ public class Problem13 {
             return null;
         }
         Node slow = head, fast = head;
-        while(fast.getNext() != null && fast.getNext().getNext() != null) {
-            slow = slow.getNext();
-            fast = fast.getNext().getNext();
+        while(fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
         return slow;
     }
@@ -20,60 +20,41 @@ public class Problem13 {
         Node merged = new Node(-1);
         Node temp = merged;
         while (left != null && right != null) {
-            if (left.getData() < right.getData()) {
-                temp.setNext(left);
-                left = left.getNext();
+            if (left.data < right.data) {
+                temp.next = left;
+                left = left.next;
             } else {
-                temp.setNext(right);
-                right = right.getNext();
+                temp.next = right;
+                right = right.next;
             }
-            temp = temp.getNext();
+            temp = temp.next;
         }
         // process the unfinished nodes
         while (left != null) {
-            temp.setNext(left);
-            left = left.getNext();
-            temp = temp.getNext();
+            temp.next = left;
+            left = left.next;
+            temp = temp.next;
         }
         while (right != null) {
-            temp.setNext(right);
-            right = right.getNext();
-            temp = temp.getNext();
+            temp.next = right;
+            right = right.next;
+            temp = temp.next;
         }
         //returning after node -1 (first node)
-        return merged.getNext();
+        return merged.next;
     }
 
     public static Node mergeSort(Node head) {
-        if(head == null || head.getNext() == null) {
+        if(head == null || head.next == null) {
             return head;
         }
         Node middle = getMiddleNode(head);
-        Node nextOfMiddle = middle.getNext();
+        Node nextOfMiddle = middle.next;
         //break link between two halves of LL
-        middle.setNext(null);
+        middle.next = null;
         Node left = mergeSort(head);
         Node right = mergeSort(nextOfMiddle);
         //now merge the two sorted halves
         return merge(left, right);
-    }
-
-    public static void main(String[] args) {
-        Node head = new Node(15);
-        Node node1 = new Node(20);
-        Node node2 = new Node(60);
-        Node node3 = new Node(10);
-        Node node4 = new Node(50);
-        Node node5 = new Node(30);
-
-        head.setNext(node1);
-        node1.setNext(node2);
-        node2.setNext(node3);
-        node3.setNext(node4);
-        node4.setNext(node5);
-
-        printLL(head);
-        head = mergeSort(head);
-        printLL(head);
     }
 }

@@ -1,27 +1,37 @@
 package sheet.linked_list;
 
 public class Node {
-    private int data;
-    private Node next;
+    int data;
+    Node next;
 
     public Node(int data) {
         this.data = data;
         this.next = null;
     }
 
-    public int getData() {
-        return data;
+    public static Node insert(Node head, int data) {
+        Node newNode = new Node(data);
+        if(head == null) {
+            head = newNode;
+        } else {
+            newNode.next = head;
+            head = newNode;
+        }
+        return head;
     }
 
-    public void setData(int data) {
-        this.data = data;
-    }
-
-    public Node getNext() {
-        return next;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
+    public static void printLL(NodeDoubly head) {
+        if(head == null) {
+            System.out.println("null");
+            return;
+        }
+        while(head != null) {
+            System.out.print(head.data);
+            if(head.next != null) {
+                System.out.print(" -> ");
+            }
+            head = head.next;
+        }
+        System.out.println();
     }
 }
