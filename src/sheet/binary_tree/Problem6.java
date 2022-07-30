@@ -28,14 +28,11 @@ public class Problem6 {
     }
 
     public static void main(String[] args) {
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.right.left = new Node(5);
-        root.right.left.left = new Node(7);
-        root.right.left.right = new Node(8);
-        root.right.right = new Node(6);
+        Node root = new Node(20);
+        root.left = new Node(16);
+        root.right = new Node(22);
+        root.left.left = new Node(11);
+        root.left.right = new Node(17);
         inOrderRecursive(root);
         System.out.println();
         inOrderIterative(root);
