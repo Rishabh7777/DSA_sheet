@@ -1,13 +1,13 @@
 package sheet.linked_list;
 
-import static sheet.linked_list.Problem1.rev;
+import static sheet.linked_list.Reverse.reverseIterative;
 
 public class Problem33 {
     Node compute(Node head) {
         if(head == null || head.next == null) {
             return head;
         }
-        head = rev(head);
+        head = reverseIterative(head);
         Node max = head, curr = head.next;
         while(curr != null) {
             if(curr.data < max.data) {
@@ -19,6 +19,6 @@ public class Problem33 {
             }
         }
         max.next = null;
-        return rev(head);
+        return reverseIterative(head);
     }
 }

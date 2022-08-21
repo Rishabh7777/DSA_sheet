@@ -1,10 +1,10 @@
 package sheet.linked_list;
 
-import static sheet.linked_list.Problem1.rev;
+import static sheet.linked_list.Reverse.reverseIterative;
 
 public class Problem35 {
     public static int getNthFromLast(Node head, int n) {
-        head = rev(head);
+        head = reverseIterative(head);
         Node curr = head;
         while(curr != null) {
             if(n == 1) {
