@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class ActivitySelection {
-    static class Pair {
+    private static class Pair {
         int start, end;
 
-        public Pair(int start, int end) {
+        Pair(int start, int end) {
             this.start = start;
             this.end = end;
         }
